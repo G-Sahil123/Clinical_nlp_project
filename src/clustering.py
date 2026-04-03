@@ -36,10 +36,10 @@ def normalize_onset_date(date_str):
 def get_cluster_status(status_list):
     if "resolved" in status_list:
         return "resolved"
-    elif "suspected" in status_list:
-        return "suspected"
-    else:
+    elif "active" in status_list:
         return "active"
+    else:
+        return "suspected"
 
 with open("output.json") as f:
     dataset = json.load(f)
