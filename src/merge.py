@@ -1,11 +1,10 @@
-from utils.helpers import save_json,load_json
-import os
+
 
 # Load files
-def merge(path1:str,path2:str):
+def merge(final_conditions,mapped_conditions):
 
-    conditions = load_json(path1)
-    mapping = load_json(path2)
+    conditions = final_conditions
+    mapping = mapped_conditions
 
 
     merged_conditions = []

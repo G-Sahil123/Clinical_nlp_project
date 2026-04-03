@@ -41,14 +41,11 @@ def get_cluster_status(status_list):
     else:
         return "suspected"
 
-with open("output.json") as f:
-    dataset = json.load(f)
-
-conditions = {}
 
 def cluster(dataset):
 
     all_candidates = []
+    conditions_set = {}
 
     for data in dataset:
         for c in data["candidates"]:
@@ -113,7 +110,7 @@ def cluster(dataset):
         
     final_conditions = []
     for cluster, canonical_name in zip(clustered_conditions.values(), canonical_names_list):
-        conditions[canonical_name] = {
+        conditions_set[canonical_name] = {
             "category": None,
             "subcategory": None
         }
@@ -134,8 +131,6 @@ def cluster(dataset):
             "onset_date": onset_date,
             "evidence": sorted_evidence
         })
-    path = os.path.join(os.getcwd(),"..","output","conditions.json")
-    save_json(conditions,path)
 
-    return final_conditions
+    return final_conditions, conditions_set
 

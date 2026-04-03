@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 from src.pipeline import process_patient
+from utils.helpers import save_json
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -35,8 +36,7 @@ def main():
 
         output_path = os.path.join(args.output_dir, f"{patient_id}.json")
 
-        with open(output_path, "w") as f:
-            json.dump(result, f, indent=2)
+        save_json(result,output_path)
 
     print("✅ Done!")
 
